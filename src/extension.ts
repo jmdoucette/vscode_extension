@@ -29,14 +29,16 @@ export function deactivate() {}
 
 vscode.workspace.onDidDeleteFiles (e => {
 	for (const uri of e.files) {
-		vscode.window.showInformationMessage('file deleted:' + uri.path);
+		let path = uri.path;
+		vscode.window.showInformationMessage('file deleted:' + path);
 	}
 });
 
 vscode.workspace.onDidRenameFiles (e => {
-	vscode.window.showInformationMessage('file deleted:')
 	for (const uris of e.files) {
-		vscode.window.showInformationMessage('file renamed from ' + uris.oldUri.path + ' to ' + uris.newUri.path);
+		let old_path = uris.oldUri.path;
+		let new_path = uris.newUri.path;
+		vscode.window.showInformationMessage('file renamed from ' + old_path + ' to ' + new_path);
 	}
 });
 
