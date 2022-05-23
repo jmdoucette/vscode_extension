@@ -26,15 +26,18 @@ export function activate(context: vscode.ExtensionContext) {
 export function deactivate() {}
 
 
-vscode.workspace.onDidCreateFiles ((_) => {
-	vscode.window.showInformationMessage('file created');
-});
 
-/*
-vscode.workspace.onDidCreateFiles (e => {
-	vscode.window.showInformationMessage('file created')
+vscode.workspace.onDidDeleteFiles (e => {
 	for (const uri of e.files) {
-		vscode.window.showInformationMessage(uri.path);
+		vscode.window.showInformationMessage('file deleted:' + uri.path);
 	}
 });
-*/
+
+vscode.workspace.onDidRenameFiles (e => {
+	vscode.window.showInformationMessage('file deleted:')
+	for (const uris of e.files) {
+		vscode.window.showInformationMessage('file renamed from ' + uris.oldUri.path + ' to ' + uris.newUri.path);
+	}
+});
+
+
