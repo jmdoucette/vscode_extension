@@ -24,3 +24,17 @@ export function activate(context: vscode.ExtensionContext) {
 
 // this method is called when your extension is deactivated
 export function deactivate() {}
+
+
+vscode.workspace.onDidCreateFiles ((_) => {
+	vscode.window.showInformationMessage('file created');
+});
+
+/*
+vscode.workspace.onDidCreateFiles (e => {
+	vscode.window.showInformationMessage('file created')
+	for (const uri of e.files) {
+		vscode.window.showInformationMessage(uri.path);
+	}
+});
+*/
